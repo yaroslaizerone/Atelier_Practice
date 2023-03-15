@@ -1,0 +1,45 @@
+﻿<Page x:Class="Atelier_Practice.Pages.RowForEmp"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Atelier_Practice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RowForEmp">
+
+    <Grid Background="White">
+
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="189,352,0,0" VerticalAlignment="Top" Foreground="White" Click="Button_Click"/>
+
+        <TextBox x:Name="tbLogin" HorizontalAlignment="Left" Margin="127,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="123" Height="34"/>
+        <TextBox x:Name="tbPassword"  HorizontalAlignment="Left" Margin="268,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="118" Height="34"/>
+
+        <TextBox x:Name="tbPasport" HorizontalAlignment="Left" Margin="125,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" Height="34"/>
+        <TextBox x:Name="tbHome" HorizontalAlignment="Left" Margin="125,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" Height="34"/>
+
+        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Margin="415,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Height="34"/>
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Margin="415,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" Height="34"/>
+
+        <TextBox x:Name="tbMidlename" HorizontalAlignment="Left" Margin="415,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" Height="34"/>
+        <TextBox x:Name="tbPhone" HorizontalAlignment="Left" Margin="415,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Height="34"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="415,116,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="415,44,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="415,188,0,0" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="415,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Номер телефона"/></TextBlock>
+
+        <TextBlock HorizontalAlignment="Left" Margin="127,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Серия и номер паспорта"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="127,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Адрес проживания"/></TextBlock>
+
+        <TextBlock HorizontalAlignment="Left" Margin="127,116,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="268,116,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="cmbPost" HorizontalAlignment="Left" Margin="127,67,0,0" VerticalAlignment="Top" Width="259" DisplayMemberPath="Post1" SelectedValuePath="ID_Post"/>
+        <TextBlock HorizontalAlignment="Left" Margin="127,44,0,0" TextWrapping="Wrap" Text="Должность" VerticalAlignment="Top"/>
+        
+        <TextBlock HorizontalAlignment="Left" Margin="415,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="ru-ru" Text="Дата рождения"/></TextBlock>
+        <TextBox x:Name="tbDateBith" HorizontalAlignment="Left" Margin="416,352,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Height="34"/>
+    </Grid>
+</Page>

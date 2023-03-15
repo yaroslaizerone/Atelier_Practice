@@ -1,0 +1,46 @@
+﻿<Page x:Class="Atelier_Practice.Pages.RegistCustomer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Atelier_Practice.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegistCustomer">
+    <Grid Background="White" Margin="0,0,0,-43">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="394*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="0,0,0,6" Grid.ColumnSpan="2">
+            <TextBlock Text="Заполните поля для регистрации" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="Имя" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="tbNameCustomer" TextWrapping="Wrap"  Width="292" Height="25" VerticalContentAlignment="Center"/>
+            <TextBlock Text="Фамилия" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="tbSurnameCustomer"  TextWrapping="Wrap"  Width="292" Height="25" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBlock Text="Отчество" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="tbPatronycCustomer" TextWrapping="Wrap"  Width="292" Height="25" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBlock Text="Номер телефона" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="tbPhoneNumber" TextWrapping="Wrap"  Width="292" Height="25" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <TextBlock Text="Логин" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="tbLoginCustomer" TextWrapping="Wrap"  Width="292" Height="25" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBlock Text="Пароль" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="tbPasswordCustomer" TextWrapping="Wrap"  Width="292" Height="25" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBlock TextWrapping="Wrap" Text="Повторите пароль" HorizontalAlignment="Center"/>
+            <TextBox x:Name="tbRepitPassword" TextWrapping="Wrap"  Width="292" Height="25" VerticalContentAlignment="Center"/>
+            <Button x:Name="btnRegist" Content="Зарегистрироваться" Foreground="White" Width="146" Height="28" Click="btnRegist_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

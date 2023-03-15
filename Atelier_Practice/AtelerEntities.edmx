@@ -1,0 +1,1023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AtelierModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID_Customer" />
+          </Key>
+          <Property Name="ID_Customer" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="int" Nullable="false" />
+          <Property Name="NameCustomer" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SurnameCustomer" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PatronicCustomer" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneCustomer" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Employee" />
+          </Key>
+          <Property Name="ID_Employee" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="int" Nullable="false" />
+          <Property Name="SurnameEmployee" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameEmployee" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatronicEmployee" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasportData" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddresEmployee" Type="nvarchar" MaxLength="200" />
+          <Property Name="Datebirth" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="ID_Materials" />
+          </Key>
+          <Property Name="ID_Materials" Type="int" Nullable="false" />
+          <Property Name="ID_Unit" Type="int" Nullable="false" />
+          <Property Name="ID_TypeMaterial" Type="int" Nullable="false" />
+          <Property Name="NameMaterial" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountOnStok" Type="int" Nullable="false" />
+          <Property Name="Warranty" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostOfUnit" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Order" Type="int" Nullable="false" />
+          <Property Name="ID_Product" Type="int" Nullable="false" />
+          <Property Name="ID_Pattern" Type="int" Nullable="false" />
+          <Property Name="CountProduct" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="int" Nullable="false" />
+          <Property Name="ID_StatusOrder" Type="int" Nullable="false" />
+          <Property Name="ID_Customer" Type="int" Nullable="false" />
+          <Property Name="DateOrder" Type="date" Nullable="false" />
+          <Property Name="DateFitting" Type="date" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Prepayment" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pattern">
+          <Key>
+            <PropertyRef Name="ID_Pattern" />
+          </Key>
+          <Property Name="ID_Pattern" Type="int" Nullable="false" />
+          <Property Name="Pattern" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="int" Nullable="false" />
+          <Property Name="Post" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Product" Type="int" Nullable="false" />
+          <Property Name="NameProduct" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CostProduct" Type="money" Nullable="false" />
+          <Property Name="Warranty" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhotoProduct" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductMaterials">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+            <PropertyRef Name="ID_Materials" />
+          </Key>
+          <Property Name="ID_Product" Type="int" Nullable="false" />
+          <Property Name="ID_Materials" Type="int" Nullable="false" />
+          <Property Name="CountMaterialInProduct" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shipment">
+          <Key>
+            <PropertyRef Name="ID_Materials" />
+            <PropertyRef Name="ID_Suppliner" />
+          </Key>
+          <Property Name="ID_Materials" Type="int" Nullable="false" />
+          <Property Name="ID_Suppliner" Type="int" Nullable="false" />
+          <Property Name="DateShipment" Type="date" Nullable="false" />
+          <Property Name="CountMaterial" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusOrder">
+          <Key>
+            <PropertyRef Name="ID_StatusOrder" />
+          </Key>
+          <Property Name="ID_StatusOrder" Type="int" Nullable="false" />
+          <Property Name="StatusOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suppliner">
+          <Key>
+            <PropertyRef Name="ID_Suppliner" />
+          </Key>
+          <Property Name="ID_Suppliner" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="int" Nullable="false" />
+          <Property Name="NameSuppliner" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AdresSuppliner" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeMaterial">
+          <Key>
+            <PropertyRef Name="ID_TypeMaterial" />
+          </Key>
+          <Property Name="ID_TypeMaterial" Type="int" Nullable="false" />
+          <Property Name="TypeMaterial" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uints">
+          <Key>
+            <PropertyRef Name="ID_Unit" />
+          </Key>
+          <Property Name="ID_Unit" Type="int" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSystem">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" Nullable="false" />
+          <Property Name="ID_Post" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_UserSystem">
+          <End Role="UserSystem" Type="Self.UserSystem" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSystem">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_UserSystem">
+          <End Role="UserSystem" Type="Self.UserSystem" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSystem">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_TypeMaterial">
+          <End Role="TypeMaterial" Type="Self.TypeMaterial" Multiplicity="1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMaterial">
+              <PropertyRef Name="ID_TypeMaterial" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="ID_TypeMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_Uint">
+          <End Role="Uints" Type="Self.Uints" Multiplicity="1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uints">
+              <PropertyRef Name="ID_Unit" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="ID_Unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Pattern">
+          <End Role="Pattern" Type="Self.Pattern" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pattern">
+              <PropertyRef Name="ID_Pattern" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ID_Pattern" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_StatusOrder">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="ID_StatusOrder" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_StatusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orsers_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID_Customer" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterials_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="ProductMaterials" Type="Self.ProductMaterials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="ID_Materials" />
+            </Principal>
+            <Dependent Role="ProductMaterials">
+              <PropertyRef Name="ID_Materials" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterials_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductMaterials" Type="Self.ProductMaterials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="ProductMaterials">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shipment_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="ID_Materials" />
+            </Principal>
+            <Dependent Role="Shipment">
+              <PropertyRef Name="ID_Materials" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shipment_Suppliner">
+          <End Role="Suppliner" Type="Self.Suppliner" Multiplicity="1" />
+          <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliner">
+              <PropertyRef Name="ID_Suppliner" />
+            </Principal>
+            <Dependent Role="Shipment">
+              <PropertyRef Name="ID_Suppliner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSystem_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="UserSystem" Type="Self.UserSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="UserSystem">
+              <PropertyRef Name="ID_Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AtelierModelContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pattern" EntityType="Self.Pattern" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductMaterials" EntityType="Self.ProductMaterials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suppliner" EntityType="Self.Suppliner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeMaterial" EntityType="Self.TypeMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uints" EntityType="Self.Uints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSystem" EntityType="Self.UserSystem" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customer_UserSystem" Association="Self.FK_Customer_UserSystem">
+            <End Role="UserSystem" EntitySet="UserSystem" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_UserSystem" Association="Self.FK_Employee_UserSystem">
+            <End Role="UserSystem" EntitySet="UserSystem" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materials_TypeMaterial" Association="Self.FK_Materials_TypeMaterial">
+            <End Role="TypeMaterial" EntitySet="TypeMaterial" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materials_Uint" Association="Self.FK_Materials_Uint">
+            <End Role="Uints" EntitySet="Uints" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Orders" Association="Self.FK_OrderProduct_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Pattern" Association="Self.FK_OrderProduct_Pattern">
+            <End Role="Pattern" EntitySet="Pattern" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_StatusOrder" Association="Self.FK_Orders_StatusOrder">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orsers_Customer" Association="Self.FK_Orsers_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterials_Materials" Association="Self.FK_ProductMaterials_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="ProductMaterials" EntitySet="ProductMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterials_Product" Association="Self.FK_ProductMaterials_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductMaterials" EntitySet="ProductMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shipment_Materials" Association="Self.FK_Shipment_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Shipment" EntitySet="Shipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shipment_Suppliner" Association="Self.FK_Shipment_Suppliner">
+            <End Role="Suppliner" EntitySet="Suppliner" />
+            <End Role="Shipment" EntitySet="Shipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSystem_Post" Association="Self.FK_UserSystem_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="UserSystem" EntitySet="UserSystem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AtelierModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID_Customer" />
+          </Key>
+          <Property Name="ID_Customer" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <Property Name="NameCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SurnameCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatronicCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneCustomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserSystem" Relationship="Self.FK_Customer_UserSystem" FromRole="Customer" ToRole="UserSystem" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orsers_Customer" FromRole="Customer" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Employee" />
+          </Key>
+          <Property Name="ID_Employee" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <Property Name="SurnameEmployee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameEmployee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatronicEmployee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasportData" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddresEmployee" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Datebirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserSystem" Relationship="Self.FK_Employee_UserSystem" FromRole="Employee" ToRole="UserSystem" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="ID_Materials" />
+          </Key>
+          <Property Name="ID_Materials" Type="Int32" Nullable="false" />
+          <Property Name="ID_Unit" Type="Int32" Nullable="false" />
+          <Property Name="ID_TypeMaterial" Type="Int32" Nullable="false" />
+          <Property Name="NameMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountOnStok" Type="Int32" Nullable="false" />
+          <Property Name="Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CostOfUnit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="TypeMaterial" Relationship="Self.FK_Materials_TypeMaterial" FromRole="Materials" ToRole="TypeMaterial" />
+          <NavigationProperty Name="Uints" Relationship="Self.FK_Materials_Uint" FromRole="Materials" ToRole="Uints" />
+          <NavigationProperty Name="ProductMaterials" Relationship="Self.FK_ProductMaterials_Materials" FromRole="Materials" ToRole="ProductMaterials" />
+          <NavigationProperty Name="Shipment" Relationship="Self.FK_Shipment_Materials" FromRole="Materials" ToRole="Shipment" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" />
+          <Property Name="ID_Product" Type="Int32" Nullable="false" />
+          <Property Name="ID_Pattern" Type="Int32" Nullable="false" />
+          <Property Name="CountProduct" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_OrderProduct_Orders" FromRole="OrderProduct" ToRole="Orders" />
+          <NavigationProperty Name="Pattern" Relationship="Self.FK_OrderProduct_Pattern" FromRole="OrderProduct" ToRole="Pattern" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" />
+          <Property Name="ID_StatusOrder" Type="Int32" Nullable="false" />
+          <Property Name="ID_Customer" Type="Int32" Nullable="false" />
+          <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFitting" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Prepayment" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Orsers_Customer" FromRole="Orders" ToRole="Customer" />
+          <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Orders" FromRole="Orders" ToRole="OrderProduct" />
+          <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Orders_StatusOrder" FromRole="Orders" ToRole="StatusOrder" />
+        </EntityType>
+        <EntityType Name="Pattern">
+          <Key>
+            <PropertyRef Name="ID_Pattern" />
+          </Key>
+          <Property Name="ID_Pattern" Type="Int32" Nullable="false" />
+          <Property Name="Pattern1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Pattern" FromRole="Pattern" ToRole="OrderProduct" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="Int32" Nullable="false" />
+          <Property Name="Post1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserSystem" Relationship="Self.FK_UserSystem_Post" FromRole="Post" ToRole="UserSystem" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Product" Type="Int32" Nullable="false" />
+          <Property Name="NameProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CostProduct" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhotoProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
+          <NavigationProperty Name="ProductMaterials" Relationship="Self.FK_ProductMaterials_Product" FromRole="Product" ToRole="ProductMaterials" />
+        </EntityType>
+        <EntityType Name="ProductMaterials">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+            <PropertyRef Name="ID_Materials" />
+          </Key>
+          <Property Name="ID_Product" Type="Int32" Nullable="false" />
+          <Property Name="ID_Materials" Type="Int32" Nullable="false" />
+          <Property Name="CountMaterialInProduct" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_ProductMaterials_Materials" FromRole="ProductMaterials" ToRole="Materials" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductMaterials_Product" FromRole="ProductMaterials" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Shipment">
+          <Key>
+            <PropertyRef Name="ID_Materials" />
+            <PropertyRef Name="ID_Suppliner" />
+          </Key>
+          <Property Name="ID_Materials" Type="Int32" Nullable="false" />
+          <Property Name="ID_Suppliner" Type="Int32" Nullable="false" />
+          <Property Name="DateShipment" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CountMaterial" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_Shipment_Materials" FromRole="Shipment" ToRole="Materials" />
+          <NavigationProperty Name="Suppliner" Relationship="Self.FK_Shipment_Suppliner" FromRole="Shipment" ToRole="Suppliner" />
+        </EntityType>
+        <EntityType Name="StatusOrder">
+          <Key>
+            <PropertyRef Name="ID_StatusOrder" />
+          </Key>
+          <Property Name="ID_StatusOrder" Type="Int32" Nullable="false" />
+          <Property Name="StatusOrder1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_StatusOrder" FromRole="StatusOrder" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Suppliner">
+          <Key>
+            <PropertyRef Name="ID_Suppliner" />
+          </Key>
+          <Property Name="ID_Suppliner" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <Property Name="NameSuppliner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdresSuppliner" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Shipment" Relationship="Self.FK_Shipment_Suppliner" FromRole="Suppliner" ToRole="Shipment" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeMaterial">
+          <Key>
+            <PropertyRef Name="ID_TypeMaterial" />
+          </Key>
+          <Property Name="ID_TypeMaterial" Type="Int32" Nullable="false" />
+          <Property Name="TypeMaterial1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_Materials_TypeMaterial" FromRole="TypeMaterial" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="Uints">
+          <Key>
+            <PropertyRef Name="ID_Unit" />
+          </Key>
+          <Property Name="ID_Unit" Type="Int32" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="Self.FK_Materials_Uint" FromRole="Uints" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="UserSystem">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <Property Name="ID_Post" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_UserSystem" FromRole="UserSystem" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_UserSystem" FromRole="UserSystem" ToRole="Employee" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_UserSystem_Post" FromRole="UserSystem" ToRole="Post" />
+        </EntityType>
+        <Association Name="FK_Customer_UserSystem">
+          <End Role="UserSystem" Type="Self.UserSystem" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSystem">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orsers_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID_Customer" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_UserSystem">
+          <End Role="UserSystem" Type="Self.UserSystem" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSystem">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_TypeMaterial">
+          <End Role="TypeMaterial" Type="Self.TypeMaterial" Multiplicity="1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeMaterial">
+              <PropertyRef Name="ID_TypeMaterial" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="ID_TypeMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_Uint">
+          <End Role="Uints" Type="Self.Uints" Multiplicity="1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uints">
+              <PropertyRef Name="ID_Unit" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="ID_Unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterials_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="ProductMaterials" Type="Self.ProductMaterials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="ID_Materials" />
+            </Principal>
+            <Dependent Role="ProductMaterials">
+              <PropertyRef Name="ID_Materials" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shipment_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="ID_Materials" />
+            </Principal>
+            <Dependent Role="Shipment">
+              <PropertyRef Name="ID_Materials" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Pattern">
+          <End Role="Pattern" Type="Self.Pattern" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pattern">
+              <PropertyRef Name="ID_Pattern" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ID_Pattern" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_StatusOrder">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="ID_StatusOrder" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ID_StatusOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSystem_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="UserSystem" Type="Self.UserSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="UserSystem">
+              <PropertyRef Name="ID_Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductMaterials_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductMaterials" Type="Self.ProductMaterials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="ProductMaterials">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shipment_Suppliner">
+          <End Role="Suppliner" Type="Self.Suppliner" Multiplicity="1" />
+          <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliner">
+              <PropertyRef Name="ID_Suppliner" />
+            </Principal>
+            <Dependent Role="Shipment">
+              <PropertyRef Name="ID_Suppliner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AtelerEntityes" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" />
+          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Pattern" EntityType="Self.Pattern" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductMaterials" EntityType="Self.ProductMaterials" />
+          <EntitySet Name="Shipment" EntityType="Self.Shipment" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" />
+          <EntitySet Name="Suppliner" EntityType="Self.Suppliner" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeMaterial" EntityType="Self.TypeMaterial" />
+          <EntitySet Name="Uints" EntityType="Self.Uints" />
+          <EntitySet Name="UserSystem" EntityType="Self.UserSystem" />
+          <AssociationSet Name="FK_Customer_UserSystem" Association="Self.FK_Customer_UserSystem">
+            <End Role="UserSystem" EntitySet="UserSystem" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orsers_Customer" Association="Self.FK_Orsers_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_UserSystem" Association="Self.FK_Employee_UserSystem">
+            <End Role="UserSystem" EntitySet="UserSystem" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materials_TypeMaterial" Association="Self.FK_Materials_TypeMaterial">
+            <End Role="TypeMaterial" EntitySet="TypeMaterial" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materials_Uint" Association="Self.FK_Materials_Uint">
+            <End Role="Uints" EntitySet="Uints" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterials_Materials" Association="Self.FK_ProductMaterials_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="ProductMaterials" EntitySet="ProductMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shipment_Materials" Association="Self.FK_Shipment_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="Shipment" EntitySet="Shipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Orders" Association="Self.FK_OrderProduct_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Pattern" Association="Self.FK_OrderProduct_Pattern">
+            <End Role="Pattern" EntitySet="Pattern" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_StatusOrder" Association="Self.FK_Orders_StatusOrder">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSystem_Post" Association="Self.FK_UserSystem_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="UserSystem" EntitySet="UserSystem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductMaterials_Product" Association="Self.FK_ProductMaterials_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductMaterials" EntitySet="ProductMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shipment_Suppliner" Association="Self.FK_Shipment_Suppliner">
+            <End Role="Suppliner" EntitySet="Suppliner" />
+            <End Role="Shipment" EntitySet="Shipment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AtelierModelContainer" CdmEntityContainer="AtelerEntityes">
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="AtelierModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="NameCustomer" ColumnName="NameCustomer" />
+                <ScalarProperty Name="SurnameCustomer" ColumnName="SurnameCustomer" />
+                <ScalarProperty Name="PatronicCustomer" ColumnName="PatronicCustomer" />
+                <ScalarProperty Name="PhoneCustomer" ColumnName="PhoneCustomer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="AtelierModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="SurnameEmployee" ColumnName="SurnameEmployee" />
+                <ScalarProperty Name="NameEmployee" ColumnName="NameEmployee" />
+                <ScalarProperty Name="PatronicEmployee" ColumnName="PatronicEmployee" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PasportData" ColumnName="PasportData" />
+                <ScalarProperty Name="AddresEmployee" ColumnName="AddresEmployee" />
+                <ScalarProperty Name="Datebirth" ColumnName="Datebirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="AtelierModel.Materials">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="ID_Materials" ColumnName="ID_Materials" />
+                <ScalarProperty Name="ID_Unit" ColumnName="ID_Unit" />
+                <ScalarProperty Name="ID_TypeMaterial" ColumnName="ID_TypeMaterial" />
+                <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
+                <ScalarProperty Name="CountOnStok" ColumnName="CountOnStok" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="CostOfUnit" ColumnName="CostOfUnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProduct">
+            <EntityTypeMapping TypeName="AtelierModel.OrderProduct">
+              <MappingFragment StoreEntitySet="OrderProduct">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="ID_Pattern" ColumnName="ID_Pattern" />
+                <ScalarProperty Name="CountProduct" ColumnName="CountProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="AtelierModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_StatusOrder" ColumnName="ID_StatusOrder" />
+                <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+                <ScalarProperty Name="DateFitting" ColumnName="DateFitting" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Prepayment" ColumnName="Prepayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pattern">
+            <EntityTypeMapping TypeName="AtelierModel.Pattern">
+              <MappingFragment StoreEntitySet="Pattern">
+                <ScalarProperty Name="ID_Pattern" ColumnName="ID_Pattern" />
+                <ScalarProperty Name="Pattern1" ColumnName="Pattern" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="AtelierModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="Post1" ColumnName="Post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="AtelierModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+                <ScalarProperty Name="CostProduct" ColumnName="CostProduct" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="PhotoProduct" ColumnName="PhotoProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMaterials">
+            <EntityTypeMapping TypeName="AtelierModel.ProductMaterials">
+              <MappingFragment StoreEntitySet="ProductMaterials">
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="ID_Materials" ColumnName="ID_Materials" />
+                <ScalarProperty Name="CountMaterialInProduct" ColumnName="CountMaterialInProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shipment">
+            <EntityTypeMapping TypeName="AtelierModel.Shipment">
+              <MappingFragment StoreEntitySet="Shipment">
+                <ScalarProperty Name="ID_Materials" ColumnName="ID_Materials" />
+                <ScalarProperty Name="ID_Suppliner" ColumnName="ID_Suppliner" />
+                <ScalarProperty Name="DateShipment" ColumnName="DateShipment" />
+                <ScalarProperty Name="CountMaterial" ColumnName="CountMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOrder">
+            <EntityTypeMapping TypeName="AtelierModel.StatusOrder">
+              <MappingFragment StoreEntitySet="StatusOrder">
+                <ScalarProperty Name="ID_StatusOrder" ColumnName="ID_StatusOrder" />
+                <ScalarProperty Name="StatusOrder1" ColumnName="StatusOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliner">
+            <EntityTypeMapping TypeName="AtelierModel.Suppliner">
+              <MappingFragment StoreEntitySet="Suppliner">
+                <ScalarProperty Name="ID_Suppliner" ColumnName="ID_Suppliner" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="NameSuppliner" ColumnName="NameSuppliner" />
+                <ScalarProperty Name="AdresSuppliner" ColumnName="AdresSuppliner" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AtelierModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeMaterial">
+            <EntityTypeMapping TypeName="AtelierModel.TypeMaterial">
+              <MappingFragment StoreEntitySet="TypeMaterial">
+                <ScalarProperty Name="ID_TypeMaterial" ColumnName="ID_TypeMaterial" />
+                <ScalarProperty Name="TypeMaterial1" ColumnName="TypeMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uints">
+            <EntityTypeMapping TypeName="AtelierModel.Uints">
+              <MappingFragment StoreEntitySet="Uints">
+                <ScalarProperty Name="ID_Unit" ColumnName="ID_Unit" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSystem">
+            <EntityTypeMapping TypeName="AtelierModel.UserSystem">
+              <MappingFragment StoreEntitySet="UserSystem">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

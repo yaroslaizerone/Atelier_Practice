@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38b66fb39fb341afbe22eab51a734d93" Name="Diagram1">
+        <EntityTypeShape EntityType="AtelierModel.Customer" Width="1.5" PointX="10.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Employee" Width="1.5" PointX="10.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Materials" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.OrderProduct" Width="1.5" PointX="14.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Orders" Width="1.5" PointX="12.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Pattern" Width="1.5" PointX="12.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Post" Width="1.5" PointX="5.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Product" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.ProductMaterials" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Shipment" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.StatusOrder" Width="1.5" PointX="10.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Suppliner" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.TypeMaterial" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.Uints" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtelierModel.UserSystem" Width="1.5" PointX="8" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="AtelierModel.FK_Customer_UserSystem" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_Orsers_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_Employee_UserSystem" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_Materials_TypeMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_Materials_Uint" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_ProductMaterials_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_Shipment_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_OrderProduct_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_OrderProduct_Pattern" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_OrderProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_Orders_StatusOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_UserSystem_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_ProductMaterials_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="AtelierModel.FK_Shipment_Suppliner" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
